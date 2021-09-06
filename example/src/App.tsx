@@ -1,7 +1,7 @@
-import React, { VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import styled from 'styled-components';
 
-import { TestComponent } from './reactComponentLib';
+import { BodyComponent } from './reactComponentLib';
 
 const StyledDiv = styled.div`
   padding: 10px;
@@ -9,9 +9,27 @@ const StyledDiv = styled.div`
   color: white;
 `;
 
-export const App: VFC = () => (
-  <div>
-    <TestComponent text="Styled Component from React library" />
-    <StyledDiv>Example App styled component</StyledDiv>
+const exampleParams = {
+  head: { selected: true },
+  left_arm: { show: false }
+}
+
+export const App: VFC = () => {
+  const [params, setParams] = useState<any>()
+
+
+  
+  return (<div>
+
+    <button onClick={() => setParams(exampleParams)}>Pass Params</button>
+    {params ? (<StyledDiv>
+      Showing with params {JSON.stringify(exampleParams, null, 2)}
+      <BodyComponent partsInput={params} />
+    </StyledDiv>) : (
+      <StyledDiv>Example With no Params
+        <BodyComponent />
+      </StyledDiv>
+    )}
   </div>
-);
+  )
+}

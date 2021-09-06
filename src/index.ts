@@ -1,3 +1,3 @@
-import { TestComponent } from './components/TestComponent/TestComponent';
+import { BodyComponent } from './components/BodyComponent/BodyComponent';
 
-export { TestComponent };
+export { BodyComponent };
