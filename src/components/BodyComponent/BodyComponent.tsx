@@ -6,8 +6,8 @@ const Wrapper = styled.div`
 & {
   width: 207px;
   position: relative;
-  padding-top: 240px;
-  height: 260px;
+  padding-top: 20px;
+  height: 500px;
   display: block;
   margin: 40px auto;
 }
@@ -158,7 +158,7 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
   }
 
   return (
-    <Wrapper>
+    <Wrapper className="human-body">
       {Object.keys(svgElements)
         .filter(part => !parts[part] || parts[part].show !== false)
         .map((part: string) => {

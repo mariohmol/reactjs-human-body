@@ -1,6 +1,6 @@
 {
   "name": "reactjs-human-body",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Mario Mol <mariohmol@gmail.com>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -8,7 +8,7 @@
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "publishnpm": "npm run build && npm publish",
-    "postinstall": "install-peers -f && cd example && npm i",
+    "postinstall-example": "install-peers -f && cd example && npm i",
     "start-example": "cd example && npm start",
     "deploy-example": "cd example && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
