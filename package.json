@@ -1,5 +1,5 @@
 {
-  "name": "react-human-body",
+  "name": "reactjs-human-body",
   "version": "0.0.1",
   "author": "Mario Mol <mariohmol@gmail.com>",
   "main": "dist/index.cjs.js",
@@ -19,7 +19,7 @@
     "test:lint:fix": "npm run test:lint -- --fix"
   },
   "repository": {
-    "url": "https://github.com/mariohmol/react-human-body",
+    "url": "https://github.com/mariohmol/reactjs-human-body",
     "type": "git"
   },
   "license": "MIT",

@@ -1,4 +1,4 @@
-# react-human-body
+# reactjs-human-body
 
 Build one Human Body figure inyour web Page using React.
 Show the parts you want and click on them to select it.
