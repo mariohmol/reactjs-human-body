@@ -1,13 +1,13 @@
 {
-  "name": "react-humanbody",
+  "name": "react-human-body",
   "version": "0.0.1",
-  "author": "Mario Mol",
+  "author": "Mario Mol <mariohmol@gmail.com>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
-    "prepublishOnly": "npm run build",
+    "publishnpm": "npm run build && npm publish",
     "postinstall": "install-peers -f && cd example && npm i",
     "start-example": "cd example && npm start",
     "deploy-example": "cd example && npm run deploy",
@@ -19,7 +19,7 @@
     "test:lint:fix": "npm run test:lint -- --fix"
   },
   "repository": {
-    "url": "https://github.com/mariohmol/react-humanbody",
+    "url": "https://github.com/mariohmol/react-human-body",
     "type": "git"
   },
   "license": "MIT",
