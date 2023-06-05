@@ -1,6 +1,6 @@
 {
   "name": "reactjs-human-body",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "author": "Mario Mol <mariohmol@gmail.com>",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

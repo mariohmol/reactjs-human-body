@@ -158,23 +158,27 @@ export interface PartSelect {
 }
 
 export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange, partsInput }) => {
-  if (!partsInput) {
-    partsInput = {
-      head: { selected: false },
-      leftShoulder: { selected: false },
-      rightShoulder: { selected: false },
-      leftArm: { selected: false },
-      rightArm: { selected: false },
-      chest: { selected: false },
-      stomach: { selected: false },
-      leftLeg: { selected: false },
-      rightLeg: { selected: false },
-      rightHand: { selected: false },
-      leftHand: { selected: false },
-      leftFoot: { selected: false },
-      rightFoot: { selected: false },
-    };
-  }
+  const partsInputInitial = {
+    head: { selected: false },
+    leftShoulder: { selected: false },
+    rightShoulder: { selected: false },
+    leftArm: { selected: false },
+    rightArm: { selected: false },
+    chest: { selected: false },
+    stomach: { selected: false },
+    leftLeg: { selected: false },
+    rightLeg: { selected: false },
+    rightHand: { selected: false },
+    leftHand: { selected: false },
+    leftFoot: { selected: false },
+    rightFoot: { selected: false },
+  };
+
+  partsInput = {
+    ...partsInputInitial,
+    ...partsInput,
+  };
+
   const [parts, setParts] = useState<PartsInput>(partsInput);
 
   const setValue = function (value: boolean | PartSelect): PartSelect {
@@ -198,51 +202,17 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
       return;
     }
 
-    const newParts = { ...parts };
-    switch (id) {
-      case 'head':
-        newParts.head = setValue(newParts.head);
-        break;
-      case 'leftShoulder':
-        newParts.leftShoulder = setValue(newParts.leftShoulder);
-        break;
-      case 'rightShoulder':
-        newParts.rightShoulder = setValue(newParts.rightShoulder);
-        break;
-      case 'leftArm':
-        newParts.leftArm = setValue(newParts.leftArm);
-        break;
-      case 'rightArm':
-        newParts.rightArm = setValue(newParts.rightArm);
-        break;
-      case 'chest':
-        newParts.chest = setValue(newParts.chest);
-        break;
-      case 'stomach':
-        newParts.stomach = setValue(newParts.stomach);
-        break;
-      case 'leftLeg':
-        newParts.leftLeg = setValue(newParts.leftLeg);
-        break;
-      case 'rightLeg':
-        newParts.rightLeg = setValue(newParts.rightLeg);
-        break;
-      case 'rightHand':
-        newParts.rightHand = setValue(newParts.rightHand);
-        break;
-      case 'leftHand':
-        newParts.leftHand = setValue(newParts.leftHand);
-        break;
-      case 'leftFoot':
-        newParts.leftFoot = setValue(newParts.leftFoot);
-        break;
-      case 'rightFoot':
-        newParts.rightFoot = setValue(newParts.rightFoot);
-        break;
+    let property: keyof typeof parts;
+    for (property in parts) {
+      if (id !== property || (parts[property] && parts[property].show === false)) {
+        continue;
+      }
+      parts[property] = setValue(parts[property]);
     }
 
-    setParts(newParts);
-    if (onChange) onChange(newParts);
+    const partsChanged = { ...parts };
+    setParts(partsChanged);
+    if (onChange) onChange(partsChanged);
     if (onClick) onClick(id);
   };
 
