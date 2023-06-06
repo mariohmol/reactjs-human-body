@@ -19,16 +19,23 @@ const exampleParams = {
   left_arm: { show: false }
 }
 
-export const App: VFC = () => {
+export function App() {
   const [params, setParams] = useState<any>();
+  const [bodyModel, setBodyModel] = useState<string>();
   const onChange = (parts: PartsInput) => console.log('Changed Parts:', parts);
   const onClick = (id: string) => console.log('Changed Id:', id);
-  return (<div>
-      <BodyComponent partsInput={params} 
-        onChange={onChange}
-        onClick={onClick}
-      />
-    )}
+  
+  return (
+    <div>
+        <button onClick={() => setParams(exampleParams)}>Pass Params</button>
+        <button onClick={() => setParams(null)}>Clear Params</button>
+        <button onClick={() => setBodyModel('male')}>Male Model</button>
+        <button onClick={() => setBodyModel('female')}>Female Model</button>
+        <BodyComponent partsInput={params} 
+          bodyModel={bodyModel}
+          onChange={onChange}
+          onClick={onClick}
+        />
   </div>
   )
 }

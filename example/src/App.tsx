@@ -17,6 +17,7 @@ const exampleParams = {
 
 export const App: VFC = () => {
   const [params, setParams] = useState<any>();
+  const [bodyModel, setBodyModel] = useState<string>();
 
   const onChange = (parts: PartsInput) => console.log('Changed Parts:', parts);
   const onClick = (id: string) => console.log('Changed Id:', id);
@@ -25,15 +26,17 @@ export const App: VFC = () => {
     <div>
       <button onClick={() => setParams(exampleParams)}>Pass Params</button>
       <button onClick={() => setParams(null)}>Clear Params</button>
+      <button onClick={() => setBodyModel('male')}>Male Model</button>
+      <button onClick={() => setBodyModel('female')}>Female Model</button>
       {params ? (
         <StyledDiv>
           Showing with params {JSON.stringify(exampleParams, null, 2)}
-          <BodyComponent partsInput={params} onChange={onChange} onClick={onClick} />
+          <BodyComponent partsInput={params} onChange={onChange} onClick={onClick} bodyModel={bodyModel} />
         </StyledDiv>
       ) : (
         <StyledDiv>
           Example With no Params
-          <BodyComponent onChange={onChange} onClick={onClick} />
+          <BodyComponent onChange={onChange} onClick={onClick} bodyModel={bodyModel}/>
         </StyledDiv>
       )}
     </div>

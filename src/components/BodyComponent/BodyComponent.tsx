@@ -146,10 +146,27 @@ export interface PartsInput {
   rightFoot: PartSelect;
 }
 
+export interface PartsModel {
+  head?: JSX.Element;
+  leftShoulder?: JSX.Element;
+  rightShoulder?: JSX.Element;
+  leftArm?: JSX.Element;
+  rightArm?: JSX.Element;
+  chest?: JSX.Element;
+  stomach?: JSX.Element;
+  leftLeg?: JSX.Element;
+  rightLeg?: JSX.Element;
+  rightHand?: JSX.Element;
+  leftHand?: JSX.Element;
+  leftFoot?: JSX.Element;
+  rightFoot?: JSX.Element;
+}
+
 export interface BodyComponentProps {
   onClick?: Function;
   onChange?: Function;
   partsInput?: PartsInput;
+  bodyModel?: string;
 }
 
 export interface PartSelect {
@@ -157,7 +174,37 @@ export interface PartSelect {
   show?: boolean;
 }
 
-export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange, partsInput }) => {
+const FemaleBodyModel: PartsModel = {
+  head: (<path d="M 15.92 68.5 L 24.72 81.046 L 28.69 95.03 L 19.436 87.65 L 14.814 71.802 L 15.92 68.5 Z M 43.02 68.5 L 34.22 81.046 L 30.244 95.034 L 39.498 87.654 L 44.12 71.806 L 43.02 68.5 Z M 49.13 40.725 L 49.238 28.95 L 28.078 14.208 L 8.123 26.133 L 8.09 40.19 L 4.85 40.405 L 6.312 50.137 L 11.52 51.947 L 13.88 63.577 L 23.6 74.595 L 34.456 74.271 L 44.016 63.901 L 45.934 51.949 L 51.141 50.139 L 52.483 40.622 L 49.13 40.725 Z M -1.528 83.339 L 7.622 75.071 L 2.166 27.37 L 28.226 11.9 L 53.82 27.326 L 51.278 75.504 L 60.518 82.809 L 61.873 24.892 L 42.556 2.376 L 25.49 0 L 10.803 3.673 L -7.242 26.72 L -1.528 83.339 Z" ></path>)
+};
+
+const MaleBodyModel: PartsModel = {
+  head: (<path d="M15.92 68.5l8.8 12.546 3.97 13.984-9.254-7.38-4.622-15.848zm27.1 0l-8.8 12.546-3.976 13.988 9.254-7.38 4.622-15.848zm6.11-27.775l.108-11.775-21.16-14.742L8.123 26.133 8.09 40.19l-3.24.215 1.462 9.732 5.208 1.81 2.36 11.63 9.72 11.018 10.856-.324 9.56-10.37 1.918-11.952 5.207-1.81 1.342-9.517zm-43.085-1.84l-.257-13.82L28.226 11.9l23.618 15.755-.216 10.37 4.976-17.085L42.556 2.376 25.49 0 10.803 3.673.002 24.415z" />)
+  // leftShoulder?: JSX.Element;
+  // rightShoulder?: JSX.Element;
+  // leftArm?: JSX.Element;
+  // rightArm?: JSX.Element;
+  // chest?: JSX.Element;
+  // stomach?: JSX.Element;
+  // leftLeg?: JSX.Element;
+  // rightLeg?: JSX.Element;
+  // rightHand?: JSX.Element;
+  // leftHand?: JSX.Element;
+  // leftFoot?: JSX.Element;
+  // rightFoot?: JSX.Element;
+};
+
+export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange, partsInput, bodyModel = 'male' }) => {
+  let currentBodyModel = MaleBodyModel;
+  switch(bodyModel) {
+    case 'female':
+      currentBodyModel = {
+        ...currentBodyModel,
+        ...FemaleBodyModel
+      }
+      break;
+  }
+   
   const partsInputInitial = {
     head: { selected: false },
     leftShoulder: { selected: false },
@@ -246,7 +293,7 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
           height="95.031"
           viewBox="0 0 56.594 95.031"
         >
-          <path d="M 15.92 68.5 L 24.72 81.046 L 28.69 95.03 L 19.436 87.65 L 14.814 71.802 L 15.92 68.5 Z M 43.02 68.5 L 34.22 81.046 L 30.244 95.034 L 39.498 87.654 L 44.12 71.806 L 43.02 68.5 Z M 49.13 40.725 L 49.238 28.95 L 28.078 14.208 L 8.123 26.133 L 8.09 40.19 L 4.85 40.405 L 6.312 50.137 L 11.52 51.947 L 13.88 63.577 L 23.6 74.595 L 34.456 74.271 L 44.016 63.901 L 45.934 51.949 L 51.141 50.139 L 52.483 40.622 L 49.13 40.725 Z M -1.528 83.339 L 7.622 75.071 L 2.166 27.37 L 28.226 11.9 L 53.82 27.326 L 51.278 75.504 L 60.518 82.809 L 61.873 24.892 L 42.556 2.376 L 25.49 0 L 10.803 3.673 L -7.242 26.72 L -1.528 83.339 Z" ></path>
+          {currentBodyModel.head}
         </svg>
       );
     },
