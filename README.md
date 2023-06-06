@@ -48,7 +48,3 @@ export function App() {
 ## Contribute:
 
 To contribute check the [Contribute](./CONTRIBUTE.md).
-
-
-Thanks to:
-* https://github.com/volcanioo/Human-Body-Rendering-HTML

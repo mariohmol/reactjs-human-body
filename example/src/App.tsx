@@ -6,8 +6,8 @@ import { PartsInput } from './reactComponentLib/components/BodyComponent/BodyCom
 
 const StyledDiv = styled.div`
   padding: 10px;
-  background-color: blue;
-  color: white;
+  background-color: #e8e8e8;
+  color: black;
 `;
 
 const exampleParams = {
