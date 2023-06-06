@@ -36,7 +36,7 @@ export const App: VFC = () => {
       ) : (
         <StyledDiv>
           Example With no Params
-          <BodyComponent onChange={onChange} onClick={onClick} bodyModel={bodyModel}/>
+          <BodyComponent onChange={onChange} onClick={onClick} bodyModel={bodyModel} />
         </StyledDiv>
       )}
     </div>

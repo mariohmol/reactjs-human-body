@@ -177,8 +177,8 @@ export interface PartSelect {
 
 const FemaleBodyModel: PartsModel = {
   head: (
-    <path d="M 48.5 40.095 L 51.356 65.021 L 59.37 81.62 L 57.435 25.245 L 42.182 12.31 L 27.833 6.4 L 10.687 11.484 L -1.97 26.915 L 0.135 82.56 L 6.669 65.336 L 7.617 40.032 L 8.853 49.814 L 12.938 51.947 L 15.14 63.577 L 24.23 73.965 L 34.456 73.956 L 43.07 64.216 L 44.358 52.107 L 48.162 50.276 L 48.5 40.095 Z" ></path>
-  )
+    <path d="M 48.5 40.095 L 51.356 65.021 L 59.37 81.62 L 57.435 25.245 L 42.182 12.31 L 27.833 6.4 L 10.687 11.484 L -1.97 26.915 L 0.135 82.56 L 6.669 65.336 L 7.617 40.032 L 8.853 49.814 L 12.938 51.947 L 15.14 63.577 L 24.23 73.965 L 34.456 73.956 L 43.07 64.216 L 44.358 52.107 L 48.162 50.276 L 48.5 40.095 Z"></path>
+  ),
 };
 
 const MaleBodyModel: PartsModel = {
@@ -223,7 +223,7 @@ const MaleBodyModel: PartsModel = {
   ),
   rightFoot: (
     <path d="M 6.378 3.485 L 6.18 26.763 L 7.958 33.198 L 11.794 33.082 L 11.963 27.717 L 13.86 32.134 L 15.962 31.932 L 15.795 27.255 L 18.39 31.123 L 20.696 30.607 L 19.257 26.201 L 23.069 29.834 L 24.706 29.107 L 23.997 24.581 L 26.322 27.261 L 27.578 25.159 L 20.436 6.313 L 13.535 1.527 L 6.378 3.485 Z"></path>
-  )
+  ),
 };
 
 export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange, partsInput, bodyModel = 'male' }) => {
@@ -232,8 +232,8 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
     case 'female':
       currentBodyModel = {
         ...currentBodyModel,
-        ...FemaleBodyModel
-      }
+        ...FemaleBodyModel,
+      };
       break;
   }
 
@@ -255,7 +255,7 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
 
   partsInput = {
     ...partsInputInitial,
-    ...partsInput
+    ...partsInput,
   };
 
   const [parts, setParts] = useState<PartsInput>(partsInput);
@@ -283,10 +283,7 @@ export const BodyComponent: React.FC<BodyComponentProps> = ({ onClick, onChange,
 
     let property: keyof typeof parts;
     for (property in parts) {
-      if (
-        id !== property
-        || (parts[property] && parts[property].show === false)
-      ) {
+      if (id !== property || (parts[property] && parts[property].show === false)) {
         continue;
       }
       parts[property] = setValue(parts[property]);
